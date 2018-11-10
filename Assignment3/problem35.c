@@ -9,11 +9,14 @@ f.tazi@jacobs-university.de
 
 int main() {
 	char input [100];
-	int n; /*input entered*/
-	printf ("Enter value: ");
-	fgets (input, sizeof(input), stdin);
-	sscanf (input, "%i", &n);
+	int n = 0; /*input entered*/
 	int sec; /*input converted to seconds*/
+
+	while (n <= 0){
+		printf ("Enter value greater than 0: ");
+		fgets (input, sizeof(input), stdin);
+		sscanf (input, "%i", &n);
+	}
 
 	for ( int i = 1; i<=n ; i++) {
 		sec = i*60;

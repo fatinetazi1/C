@@ -11,21 +11,13 @@ int main() {
 	char input [100];
 
 	char ch; /*character entered*/
+	int n = 0; /*input entered*/
 	printf ("Enter character: ");
 	fgets (input, sizeof(input), stdin);
 	sscanf (input, "%c", &ch);
 
-	int n; /*input entered*/
-	printf ("Enter value: ");
-	fgets (input, sizeof(input), stdin);
-	sscanf (input, "%i", &n);
-
 	while ( n <= 0 ) {
-		printf ("Enter character: ");
-		fgets (input, sizeof(input), stdin);
-		sscanf (input, "%c", &ch);
-
-		printf ("Enter value: ");
+		printf ("Enter value greater than 0: ");
 		fgets (input, sizeof(input), stdin);
 		sscanf (input, "%i", &n);
 	}
