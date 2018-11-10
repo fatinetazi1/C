@@ -10,17 +10,13 @@ f.tazi@jacobs-university.de
 #include <stdlib.h>
 
 void two_smallest(float arr[], int n) {
-	float s1 = arr[0]; //smallest number in the array
-	float s2 = arr[0]; //second smallest number in the array
-	float temp = 0;
+	float s1 = n; //smallest number in the array
+	float s2 = n; //second smallest number in the array
 	for (int i = 1; i < n; ++i) {
-		if ((s1==arr[1])||(s2==arr[2])) {
-			i++;
-		}
+		if ((s1 == arr[1]) || (s2 == arr[2])) i++;
 		if (s1 > arr[i]) {
-			temp = s1;
+			s2 = s1;
 			s1 = arr[i];
-			s2 = temp; 
 		} 
 	}
 
@@ -35,24 +31,20 @@ int main() {
 	printf("Enter number:\n");
 	fgets(value, sizeof(value), stdin);
 	sscanf (value, "%f", &n);
-	float* a = (float*) malloc(sizeof(float)*n);
-	a[0] = n;
 
-	if (a==NULL)
-	{
+	float* a = (float*) malloc(sizeof(float)*n);
+	if (a == NULL) {
 		printf("An error has occured.\n");
 		exit(1);
 	}
-	
-	for (int i = 1; i < n; ++i)
-	{
-		printf("Enter number:\n");
+
+	a[0] = n;
+	for (int i = 1; i < n; ++i) {
 		fgets(value, sizeof(value), stdin);
 		sscanf (value, "%f", &a[i]);
 	}
 
-	n = (int) n;
-	two_smallest(a, n);
+	two_smallest(a, (int) n);
 	free(a);
 	return 0;
 }

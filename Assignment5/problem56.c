@@ -12,20 +12,13 @@ f.tazi@jacobs-university.de
 double maxdiff(double arr[], int n) {
 	double min = arr[0]; //smallest number in the array
 	double max = arr[0]; //largest number in the array
-	for (int i = 1; i < n; ++i) {
-		if (min > arr[i]) {
-			min = arr[i];
-		} 
-	}
 
 	for (int i = 1; i < n; ++i) {
-		if (max < arr[i]){
-			max = arr[i];
-		}
+		if (min > arr[i]) min = arr[i];
+		if (max < arr[i]) max = arr[i];
 	}
 
-	double difference = max - min;
-	return difference;
+	return max - min;
 }
 
 
@@ -33,28 +26,21 @@ int main() {
 	char value[100];
 	double n; // first value entered and size of array
 	printf("Enter number:\n");
-	fgets(value, sizeof(value), stdin);
-	sscanf (value, "%lf", &n);
-	double* a = (double*) malloc(sizeof(double)*n);
-	a[0] = n;
+	scanf ("%lf", &n);
 
-	if (a==NULL)
-	{
+	double* a = (double*) malloc(sizeof(double)*n);
+	if (a == NULL) {
 		printf("An error has occured.\n");
 		exit(1);
 	}
+
+	a[0] = n;
 	
-	for (int i = 1; i < n; ++i)
-	{
-		printf("Enter number:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%lf", &a[i]);
+	for (int i = 1; i < n; ++i) {
+		scanf ("%lf", &a[i]);
 	}
 
-	n = (int) n;
-
-	printf("The difference between the largest and smallest number is: %lf.\n", maxdiff(a, n));
-
+	printf("The difference between the largest and smallest number is: %lf.\n", maxdiff(a, (int) n));
 	free(a);
 	return 0;
 }
