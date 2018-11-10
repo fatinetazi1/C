@@ -8,25 +8,21 @@ f.tazi@jacobs-university.de
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-	FILE *fptr=fopen("text.txt", "r"); // opening text file
-	if(fptr==NULL)
-	{
-		printf("Error!\n");
+int main() {
+	char line[100]; 
+
+	FILE *fptr = fopen("text.txt", "r"); // opening text file
+	if(fptr == NULL) {
 		exit(1);
 	}
 
-	char ch; // char in text file
-	FILE *fptr2=fopen("text_copy.txt", "w"); // opening a file to copy in
-	if(fptr2==NULL)
-	{
-		printf("Error!\n");
+	FILE *fptr2 = fopen("text_copy.txt", "w"); // opening a file to copy in
+	if(fptr2 == NULL) {
 		exit(1);
 	}
-	while((ch=getc(fptr))!=EOF)
-	{
-		fprintf(fptr2, "%c", ch);
+
+	while(fgets(line, sizeof(line), fptr) != NULL) {
+		fprintf(fptr2, "%s", line);
 	}
 
 	fclose(fptr);

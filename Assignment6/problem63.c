@@ -11,12 +11,9 @@ f.tazi@jacobs-university.de
 #include <ctype.h>
 
 int count_upper(char* str) {
-	int dim = strlen(str); //length of string
 	int count = 0; // number of uppercase
-	for (int i = 0; i < dim; ++i)
-	{
-		if (isupper(str[i]))
-		{
+	for (char *i = str; *i != '\0'; i++) {
+		if (isupper(*i)){
 			count++;
 		}
 	}
@@ -24,21 +21,12 @@ int count_upper(char* str) {
 }
 
 int main() {
-	char value[100];
 	char string[100]; //string entered
-	printf("Enter string:\n");
-	fgets(value, sizeof(value), stdin);
-	sscanf (value, "%s", string);
-	if (string[0]=='\0') {
-		printf("The program terminated.\n");
-		exit(1);
-	} else {
-		printf("There are %d uppercase letters in the string.\n", count_upper(string));
-	}
-	while(string[0] != '\n') {
+	while(1) {
 		printf("Enter string:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%s", string);
+		fgets(string, sizeof(string), stdin);
+		sscanf(string, "%s", string);
+		if (strcmp(string, "\n") == 0) break;
 		printf("There are %d uppercase letters in the string.\n", count_upper(string));
 	}
 	return 0;

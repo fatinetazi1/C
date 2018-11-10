@@ -27,27 +27,28 @@ int main() {
 	printf("Enter n:\n");
 	fgets(value, sizeof(value), stdin);
 	sscanf (value, "%lf", &n);
+
 	double* v = (double*) malloc(sizeof(double)*n); // array of v's
+	if(v == NULL) exit(1);
+
+	printf("Enter v:\n");
 	for (int i = 0; i < (int) n; ++i) {
-		printf("Enter v:\n");
 		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%lf", &v[i]);
+		sscanf(value, "%lf", &v[i]);
 	}
 
 	double smallest = v[0]; // smallest number in the array
+	int sindex;
 	double largest = v[0]; // largest number in the array
+	int lindex;
 
 	for (int i = 0; i < n; ++i) {
-		if (v[i]>largest) {
-			largest = v[i];
-		} 
-		if (v[i]<smallest) {
-			smallest = v[i];
-		}
+		if (v[i]>largest) {largest = v[i]; lindex = i;}
+		if (v[i]<smallest) {smallest = v[i]; sindex = i;}
 	}
 	
 	printf("The value of the norm is: %lf.\n", vector_norm(n, v));
-	printf("The smallest component of the vector is %lf and the largest is %lf.\n", smallest, largest);
+	printf("The smallest component of the vector is %lf at index %d and the largest is %lf at index %d.\n", smallest, sindex, largest, lindex);
 	free(v);
 	return 0;
 }
