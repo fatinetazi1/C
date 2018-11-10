@@ -9,46 +9,54 @@ f.tazi@jacobs-university.de
 #include <string.h>
 
 	int main() {
-		char value[100];
-
-		char s1[50]; /*String 1*/
-		char s2[50]; /*String 2*/
-		char s3[50]; /*String 3*/
+		char s1[100]; /*String 1*/
+		char s2[100]; /*String 2*/
+		char s3[100]; /*String 3*/
+		int i; // length of string
 		char c; /*Character that will be looked for in s1*/
-		printf("Enter first string:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%s", s1);
-		printf("Enter second string:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%s", s2);
 
-		char concatenation[100];
+		printf("Enter first string:\n");
+		fgets(s1, sizeof(s1), stdin);
+		sscanf (s1, "%s", s1);
+		for(i = 0; s1[i] != '\0'; ++i);
+		printf("Length: %d.\n", i);
+
+		printf("Enter second string:\n");
+		fgets(s2, sizeof(s2), stdin);
+		sscanf (s2, "%s", s2);
+		for(i = 0; s2[i] != '\0'; ++i);
+		printf("Length: %d.\n", i);
+
+		char concatenation[200];
 		strcpy(concatenation, s1);
 		strcat(concatenation, s2);
+		printf("The concatenation of the two strings is: %s \n", concatenation);
+
 		strcpy(s3, s1);
-		int comp = strcmp(s1, s2); /*Camparison between string 1 and 2*/
-
-		printf("The concatenation of the two strings is the following: %s \n", concatenation);
 		printf("The third string is: %s \n", s3);
-		printf("The comparison between s1 and s2 results in: %d. \n", comp);
 
-		printf("Enter string(c):\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%c", &c);
+		int comp = strcmp(s1, s2); /*Camparison between string 1 and 2*/
+		if(comp < 0) {
+      		printf("String 1 is less than String 2\n");
+   		} else if(comp > 0) {
+      		printf("String 2 is less than String 1\n");
+   		} else {
+      		printf("String 1 is equal to String 2\n");
+   		}
+
+		printf("Enter character:\n");
+		scanf ("%c", &c);
 
 		int exists = 0;
-
-		for (int i = 0; i < 50; ++i)
-		{
+		for(i = 0; s1[i] != '\0'; ++i){
 			if (s1[i] == c) {
-				printf("The position of the first occurence of the string(c) is: %d.\n", i); 
+				printf("The index of the first occurence of the character is: %d.\n", i); 
 				exists = 1; 
+				break;
 			} 
 		}
-		if (exists == 0)
-		{
-			printf("String(c) does not exist in the first string(s1).\n");
-		}
+
+		if (exists == 0) printf("Character does not exist in the first string(s1).\n");
 
 		return 0;
 	}

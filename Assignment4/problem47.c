@@ -13,46 +13,34 @@ f.tazi@jacobs-university.de
 	}
 
 	void sumbyref(double a, double b, double *s){
-		double sum_0 = a + b;
-		*s = sum_0;
-		return;
+		*s = sum(a, b);
 	}
 
 	void swapbyref(double *a, double *b){
 		double temp = *a;
 		*a = *b;
 		*b = temp;
-		return;
 	}
 
 	int main() {
-		char value[100];
 
 		double a, b; /*numbers entered by user*/
-		double *ptra = &a; /*pointer for a*/
-		double *ptrb = &b; /*pointer for b*/
-		double *ptr; /*pointer for the sum of a and b*/
-		printf("Enter first integer:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%lf", &a);
-		printf("Enter second integer:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%lf", &b);
+		double s; /*sum of a and b*/
+		printf("Enter first double:\n");
+		scanf ("%lf", &a);
+		printf("Enter second double:\n");
+		scanf ("%lf", &b);
 
-		printf("The sum of the two integers is: %lf\n", sum(a, b));
-		sumbyref(a, b, ptr);
-		printf("The address of the sum of the integers is: %p\n", ptr);
-		printf("The value of the first integer is: %lf. The value of the second integer is: %lf.\n", a, b);
-		swapbyref(ptra, ptrb);
-		printf("The integers swapped. So, the first integer's value is: %lf and the second integer's value is %lf.\n", a, b);
+		printf("The sum of the two doubles is: %lf\n", sum(a, b));
+		sumbyref(a, b, &s);
+		printf("The sum of the doubles by address is: %lf\n", s);
+		printf("The value of the first integer is: %lf. The value of the second double is: %lf.\n", a, b);
+		swapbyref(&a, &b);
+		printf("The doubles swapped. So, the first double's value is: %lf and the second double's value is %lf.\n", a, b);
 
-		double summ = *ptr;
 		printf("The calls for the two first functions have the same effect:\n");
-		if (summ == sum(a,b))
-		{
-			printf("True.\n");
-		} else {
-			printf("False.\n");
-		}
+		if (s == sum(a,b)) printf("True.\n"); 
+		else  printf("False.\n");
+		
 		return 0;
 	}

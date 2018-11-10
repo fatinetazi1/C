@@ -29,5 +29,5 @@ f.tazi@jacobs-university.de
 		sscanf (value, "%d", &ounces);
 
 		printf("Conversion to kilograms: %lf\n", to_kilogram(pounds, ounces));
-		return 0;
+	return 0;
 }
