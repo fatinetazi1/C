@@ -13,7 +13,7 @@ int main() {
 	printf ("Enter value: ");
 	fgets (input, sizeof(input), stdin);
 	sscanf (input, "%i", &value);
-
+	
 	 if ( (value%7 == 0) && (value%4 == 0) ) {
 	 	printf("The number is divisible by 4 and 7.\n");
 	 }
