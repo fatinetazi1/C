@@ -22,33 +22,24 @@ void myreplace (char *str, char c, char e) {
 }
 
 int main() {
-	char value[100];
 	char string[70];
 	char replaced; // c
 	char placed; // e
-	printf("Enter string:\n");
-	fgets(string, sizeof(string), stdin);
-	if ((strcmp(string, "quit")) == 0) {
-		printf("The program terminated.\n");
-		exit(1);
-	} else {
-		printf("Enter old character:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%c", &replaced);
-		printf("Enter new character:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%c", &placed);
-		myreplace(string, replaced, placed);
-	}
-	while ((strcmp(string, "quit")) == 0) {
+	
+	while (1) {
 		printf("Enter string:\n");
-		fgets(string, sizeof(string), stdin);
+		scanf("%s", string);
+		getchar();
+		if (strcmp(string, "quit") == 0) break;
+
 		printf("Enter old character:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%c", &replaced);
+		scanf ("%c", &replaced);
+		getchar();
+
 		printf("Enter new character:\n");
-		fgets(value, sizeof(value), stdin);
-		sscanf (value, "%c", &placed);
+		scanf ("%c", &placed);
+		getchar();
+
 		myreplace(string, replaced, placed);
 	}
 	return 0;

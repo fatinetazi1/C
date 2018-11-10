@@ -23,17 +23,13 @@ void matrix(int arr[][50], int n) {
 }
 
 void sec_diagonal_matrix(int arr[][50], int n) {
-	printf("The main diagonal is: \n");
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < n; ++j)
-		{
-			if (i==j) {
-				printf("%d ", arr[i][n-1-j]);
-			}
-		}
-		printf("\n");
+	printf("The second diagonal is: \n");
+	int j = n;
+	for (int i = 0; i < n; ++i) {
+		j--;
+		printf("%d ", arr[i][j]);
 	}
+	printf("\n");
 	return;
 }
 

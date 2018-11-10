@@ -24,16 +24,10 @@ void matrix(int arr[][50], int n) {
 
 void diagonal_matrix(int arr[][50], int n) {
 	printf("The main diagonal is: \n");
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < n; ++j)
-		{
-			if (i==j) {
-				printf("%d ", arr[i][j]);
-			}
-		}
-		printf("\n");
+	for (int i = 0; i < n; ++i) {
+		printf("%d ", arr[i][i]);
 	}
+	printf("\n");
 	return;
 }
 

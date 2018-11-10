@@ -13,7 +13,7 @@ void two_smallest(float arr[], int n) {
 	float s1 = n; //smallest number in the array
 	float s2 = n; //second smallest number in the array
 	for (int i = 1; i < n; ++i) {
-		if ((s1 == arr[1]) || (s2 == arr[2])) i++;
+		while((s1 == arr[i]) || (s2 == arr[i])){ i++; }
 		if (s1 > arr[i]) {
 			s2 = s1;
 			s1 = arr[i];
